@@ -91,32 +91,29 @@
             var amount = document.getElementById("amount").value;
             var years = document.getElementById("years").value;
             var interest = document.getElementById("interest").value;
-            // console.log(amount);
-            // console.log(years);
-            // console.log(returnRate);
-            var totalInvestment = amount * years * 12;
-            // console.log(totalInvestment);
-            
-            returnRate = interest / 100 / 12;
-            months = years * 12;
-            x = Math.pow((1 + returnRate), months) - 1;
-            var wealthGained = Math.round(amount * x * ((1 + returnRate) / returnRate));
-            // total = (amount * 12) * years;
-            // console.log(wealthGained);
-            var maturityValue = wealthGained - totalInvestment;
-            document.getElementById("resultAmount").textContent = amount;
-            document.getElementById("resultYears").textContent = years;
-            document.getElementById("resultRate").textContent = interest;
-            document.getElementById("totalInvestment").textContent = totalInvestment;
-            document.getElementById("wealthGained").textContent = wealthGained;
-            document.getElementById("maturityValue").textContent = maturityValue;
 
-            if (document.getElementById("form").style.display == 'none') {
-                document.getElementById("form").style.display = 'block';
-                document.getElementById("result").style.display = 'none';
-            } else {
-                document.getElementById("form").style.display = 'none';
-                document.getElementById("result").style.display = 'block';
+            if (amount && years && interest) {
+                var totalInvestment = amount * years * 12;
+                
+                returnRate = interest / 100 / 12;
+                months = years * 12;
+                x = Math.pow((1 + returnRate), months) - 1;
+                var wealthGained = Math.round(amount * x * ((1 + returnRate) / returnRate));
+                var maturityValue = wealthGained - totalInvestment;
+                document.getElementById("resultAmount").textContent = amount;
+                document.getElementById("resultYears").textContent = years;
+                document.getElementById("resultRate").textContent = interest;
+                document.getElementById("totalInvestment").textContent = totalInvestment;
+                document.getElementById("wealthGained").textContent = wealthGained;
+                document.getElementById("maturityValue").textContent = maturityValue;
+    
+                if (document.getElementById("form").style.display == 'none') {
+                    document.getElementById("form").style.display = 'block';
+                    document.getElementById("result").style.display = 'none';
+                } else {
+                    document.getElementById("form").style.display = 'none';
+                    document.getElementById("result").style.display = 'block';
+                }
             }
         }
     </script>

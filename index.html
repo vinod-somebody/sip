@@ -7,202 +7,257 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.min.css">
     <script type="text/javascript" src="jquery.min3.5.1.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="container main-content p-5 mt-5 justify-content-center" style="width: 45%;">
-        <form id="formSIP">
-            <div class="mb-3">
-                <label for="amount" class="form-label">Amount (₹)</label>
-                <input type="text" class="form-control" name="amount" id="amount">
-            </div>
-            <div class="mb-3">
-                <label for="years1" class="form-label">Duration (in years)</label>
-                <input type="number" class="form-control" id="years1">
-            </div>
-            <div class="mb-3">
-                <label for="interest1" class="form-label">Expected return (%)</label>
-                <input type="text" class="form-control" id="interest1">
-            </div>
-            <button type="button" onclick="showResultSIP()" class="btn btn-primary">Calculate</button>
-        </form>
-        <div id="resultSIP" class="container" style="display: none;">
-            <div class="row">
-                <div class="col-md-6">
-                    <table class="table">
-                        <tr>
-                            <td>Monthly Installment</td>
-                            <td>
-                                <h5 id="resultAmount"></h5>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Number of Years</td>
-                            <td>
-                                <h5 id="resultYears1"></h5>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Expected Rate of Return</td>
-                            <td>
-                                <h5 id="resultRate1"></h5>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-6">
-                    <table class="table">
-                        <tr>
-                            <td>Total Investment</td>
-                            <td>
-                                ₹<h4 id="totalInvestment1"></h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Wealth Gained</td>
-                            <td>
-                                ₹<h4 id="wealthGained1"></h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Maturity Value</td>
-                            <td>
-                                ₹<h4 id="maturityValue"></h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <button type="button" onclick="showResultSIP()" class="btn btn-primary">Calculate Again</button>
-            </div>
-        </div>
-    </div>
+    <div class="container justify-content-center mt-5 border rounded p-3">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item m-2" role="presentation">
+                <button class="nav-link active" id="pills-sip-tab" data-bs-toggle="pill" data-bs-target="#pills-sip"
+                    type="button" role="tab" aria-controls="pills-sip" aria-selected="true">SIP Calculator</button>
+            </li>
+            <li class="nav-item m-2" role="presentation">
+                <button class="nav-link" id="pills-reverse-tab" data-bs-toggle="pill" data-bs-target="#pills-reverse"
+                    type="button" role="tab" aria-controls="pills-reverse" aria-selected="false">SIP Reverse
+                    Calculator</button>
+            </li>
+            <li class="nav-item m-2" role="presentation">
+                <button class="nav-link" id="pills-lumpsum-tab" data-bs-toggle="pill" data-bs-target="#pills-lumpsum"
+                    type="button" role="tab" aria-controls="pills-lumpsum" aria-selected="false">Lumpsum</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-sip" role="tabpanel" aria-labelledby="pills-sip-tab">
+                <form id="formSIP">
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount (₹)</label>
+                        <div class="col col-lg-3">
+                            <input type="text" class="form-control" name="amount" id="amount">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="years1" class="form-label">Duration (in years)</label>
+                        <div class="col col-lg-3">
+                            <input type="number" class="form-control" id="years1">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="interest1" class="form-label">Expected return (%)</label>
+                        <div class="col col-lg-3">
+                            <input type="text" class="form-control" id="interest1">
+                        </div>
+                    </div>
+                    <button type="button" onclick="showResultSIP()" class="btn btn-primary">Calculate</button>
+                </form>
 
-    <div class="container main-content p-5 mt-5 justify-content-center" style="width: 45%;">
-        <form id="formSIPReverse">
-            <div class="mb-3">
-                <label for="targetAmount" class="form-label">Target Amount (₹)</label>
-                <input type="text" class="form-control" name="targetAmount" id="targetAmount">
-            </div>
-            <div class="mb-3">
-                <label for="years2" class="form-label">Duration (in years)</label>
-                <input type="number" class="form-control" id="years2">
-            </div>
-            <div class="mb-3">
-                <label for="interest2" class="form-label">Expected return (%)</label>
-                <input type="text" class="form-control" id="interest2">
-            </div>
-            <button type="button" onclick="showResultSIPReverse()" class="btn btn-primary">Calculate</button>
-        </form>
-        <div id="resultSIPReverse" class="container" style="display: none;">
-            <div class="row">
-                <div class="col-md-6">
-                    <table class="table">
-                        <tr>
-                            <td>Monthly Installment</td>
-                            <td>
-                                <h5 id="resultTargetAmount"></h5>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Number of Years</td>
-                            <td>
-                                <h5 id="resultYears2"></h5>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Expected Rate of Return</td>
-                            <td>
-                                <h5 id="resultRate2"></h5>
-                            </td>
-                        </tr>
-                    </table>
+                <div id="resultSIP" class="container" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <table class="table">
+                                <tr>
+                                    <td>Monthly Installment</td>
+                                    <td>
+                                        <h5 id="resultAmount"></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Number of Years</td>
+                                    <td>
+                                        <h5 id="resultYears1"></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Expected Rate of Return</td>
+                                    <td>
+                                        <h5 id="resultRate1"></h5>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-3">
+                            <table class="table">
+                                <tr>
+                                    <td>Total Investment</td>
+                                    <td>
+                                        ₹<h4 id="totalInvestment1"></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Wealth Gained</td>
+                                    <td>
+                                        ₹<h4 id="wealthGained1"></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Maturity Value</td>
+                                    <td>
+                                        ₹<h4 id="maturityValue"></h4>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col col-lg-3">
+                                <button type="button" onclick="showResultSIP()" class="btn btn-primary">Calculate
+                                    Again</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <table class="table">
-                        <tr>
-                            <td>To achieve your goal, you need to invest</td>
-                            <td>
-                                ₹<h4 id="resultGoalAmount"></h4>/Monthly
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Total Investment</td>
-                            <td>
-                                ₹<h4 id="totalInvestment2"></h4>
-                            </td>
-                        </tr>
-                    </table>
+            </div>
+            <div class="tab-pane fade" id="pills-reverse" role="tabpanel" aria-labelledby="pills-reverse-tab">
+                <form id="formSIPReverse">
+                    <div class="mb-3">
+                        <label for="targetAmount" class="form-label">Target Amount (₹)</label>
+                        <div class="col col-lg-3">
+                            <input type="text" class="form-control" name="targetAmount" id="targetAmount">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="years2" class="form-label">Duration (in years)</label>
+                        <div class="col col-lg-3">
+                            <input type="number" class="form-control" id="years2">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="interest2" class="form-label">Expected return (%)</label>
+                        <div class="col col-lg-3">
+                            <input type="text" class="form-control" id="interest2">
+                        </div>
+                    </div>
+                    <button type="button" onclick="showResultSIPReverse()" class="btn btn-primary">Calculate</button>
+                </form>
+                <div id="resultSIPReverse" class="container" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <table class="table">
+                                <tr>
+                                    <td>Monthly Installment</td>
+                                    <td>
+                                        <h5 id="resultTargetAmount"></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Number of Years</td>
+                                    <td>
+                                        <h5 id="resultYears2"></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Expected Rate of Return</td>
+                                    <td>
+                                        <h5 id="resultRate2"></h5>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-3">
+                            <table class="table">
+                                <tr>
+                                    <td>To achieve your goal, you need to invest</td>
+                                    <td>
+                                        ₹<h4 id="resultGoalAmount"></h4>/Monthly
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Total Investment</td>
+                                    <td>
+                                        ₹<h4 id="totalInvestment2"></h4>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col col-lg-3">
+                                <button type="button" onclick="showResultSIPReverse()" class="btn btn-primary">Calculate
+                                    Again</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" onclick="showResultSIPReverse()" class="btn btn-primary">Calculate Again</button>
             </div>
-        </div>
-    </div>
-
-    <div class="container main-content p-5 mt-5 justify-content-center" style="width: 45%;">
-        <form id="formLumpsum">
-            <div class="mb-3">
-                <label for="amountInvested" class="form-label">One-time Investment (₹)</label>
-                <input type="text" class="form-control" name="amountInvested" id="amountInvested">
-            </div>
-            <div class="mb-3">
-                <label for="years3" class="form-label">Time Horizon (in years)</label>
-                <input type="number" class="form-control" id="years3">
-            </div>
-            <div class="mb-3">
-                <label for="interest3" class="form-label">Expected return (%)</label>
-                <input type="text" class="form-control" id="interest3">
-            </div>
-            <button type="button" onclick="showResultLumpsum()" class="btn btn-primary">Calculate</button>
-        </form>
-        <div id="resultLumpsum" class="container" style="display: none;">
-            <div class="row">
-                <div class="col-md-6">
-                    <table class="table">
-                        <tr>
-                            <td>One-time Investment</td>
-                            <td>
-                                <h5 id="resultAmountInvested"></h5>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Time (in years)</td>
-                            <td>
-                                <h5 id="resultYears3"></h5>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Expected Rate of Return</td>
-                            <td>
-                                <h5 id="resultRate3"></h5>
-                            </td>
-                        </tr>
-                    </table>
+            <div class="tab-pane fade" id="pills-lumpsum" role="tabpanel" aria-labelledby="pills-lumpsum-tab">
+                <form id="formLumpsum">
+                    <div class="mb-3">
+                        <label for="amountInvested" class="form-label">One-time Investment (₹)</label>
+                        <div class="col col-lg-3">
+                            <input type="text" class="form-control" name="amountInvested" id="amountInvested">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="years3" class="form-label">Time Horizon (in years)</label>
+                        <div class="col col-lg-3">
+                            <input type="number" class="form-control" id="years3">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="interest3" class="form-label">Expected return (%)</label>
+                        <div class="col col-lg-3">
+                            <input type="text" class="form-control" id="interest3">
+                        </div>
+                    </div>
+                    <button type="button" onclick="showResultLumpsum()" class="btn btn-primary">Calculate</button>
+                </form>
+                <div id="resultLumpsum" class="container" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <table class="table">
+                                <tr>
+                                    <td>One-time Investment</td>
+                                    <td>
+                                        <h5 id="resultAmountInvested"></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Time (in years)</td>
+                                    <td>
+                                        <h5 id="resultYears3"></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Expected Rate of Return</td>
+                                    <td>
+                                        <h5 id="resultRate3"></h5>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-3">
+                            <table class="table">
+                                <tr>
+                                    <td>Investment Amount</td>
+                                    <td>
+                                        ₹<h4 id="resultAmountInvested2"></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Expected Amount</td>
+                                    <td>
+                                        ₹<h4 id="resultAmountExpected"></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Wealth Gained</td>
+                                    <td>
+                                        ₹<h4 id="resultWealthGained"></h4>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col col-lg-3">
+                                <button type="button" onclick="showResultLumpsum()" class="btn btn-primary">Calculate
+                                    Again</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <table class="table">
-                        <tr>
-                            <td>Investment Amount</td>
-                            <td>
-                                ₹<h4 id="resultAmountInvested2"></h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Expected Amount</td>
-                            <td>
-                                ₹<h4 id="resultAmountExpected"></h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Wealth Gained</td>
-                            <td>
-                                ₹<h4 id="resultWealthGained"></h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <button type="button" onclick="showResultLumpsum()" class="btn btn-primary">Calculate Again</button>
             </div>
         </div>
     </div>
@@ -247,7 +302,7 @@
         }
         function showResultSIPReverse() {
             var targetAmount = document.getElementById("targetAmount").value;
-            var years2 = document.getElementById("years2").value;   
+            var years2 = document.getElementById("years2").value;
             var interest2 = document.getElementById("interest2").value;
 
             if (targetAmount && years2 && interest2) {

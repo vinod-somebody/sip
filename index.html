@@ -58,7 +58,7 @@
                     <div class="container d-flex justify-container-center">
                         <div class="row">
                             <div class="col-md-12">
-                                <div id="piechartSIP" style="width: 1000px; height: 1000px;"></div>
+                                <div id="piechartSIP" style="margin: 0px; width: 500px; height: 500px;"></div>
                             </div>
                         </div>
                     </div>
@@ -144,13 +144,13 @@
                         <div class="col-md-3">
                             <table class="table">
                                 <tr>
-                                    <td>Monthly Installment</td>
+                                    <td>Target Amount</td>
                                     <td>
                                         <h5 id="resultTargetAmount"></h5>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Number of Years</td>
+                                    <td>Duration (in years)</td>
                                     <td>
                                         <h5 id="resultYears2"></h5>
                                     </td>
@@ -270,18 +270,21 @@
         </div>
     </div>
     <script>
-        function drawChart(a, b) {
+        function drawChart(data, id) {
+            // console.log(data.totalInvestment);
+            // console.log(id);
+            // return;
             var data = google.visualization.arrayToDataTable([
                 ['Invested Amount', 'Estimated Returns'],
-                ['Invested Amount', a],
-                ['Estimated Returns', b],
+                ['Estimated Returns', data.wealthGained],
+                ['Invested Amount', data.totalInvestment],
             ]);
             var options = {
                 title: '',
                 pieSliceText: 'value',
                 is3D: true
             };
-            var chart = new google.visualization.PieChart(document.getElementById('piechartSIP'));
+            var chart = new google.visualization.PieChart(document.getElementById(id));
             chart.draw(data, options);
         }
         function showResultSIP() {
@@ -310,8 +313,10 @@
                         document.getElementById("wealthGained1").textContent = data.wealthGained;
                         document.getElementById("maturityValue").textContent = data.maturityValue;
 
+                        var id = "piechartSIP";
+
                         google.charts.load('current', { 'packages': ['corechart'] });
-                        google.charts.setOnLoadCallback(() => drawChart(data.totalInvestment, data.wealthGained));
+                        google.charts.setOnLoadCallback(() => drawChart(data, id));
                     }
                 })
 

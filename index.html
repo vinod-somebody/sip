@@ -36,22 +36,23 @@
                     <div class="mb-3">
                         <label for="amount" class="form-label">Amount (₹)</label>
                         <div class="col col-lg-3">
-                            <input type="text" class="form-control" name="amount" id="amount">
+                            <input type="text" class="form-control" name="amount">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="years1" class="form-label">Duration (in years)</label>
+                        <label for="duration" class="form-label">Duration (in years)</label>
                         <div class="col col-lg-3">
-                            <input type="number" class="form-control" id="years1">
+                            <input type="number" class="form-control" name="duration">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="interest1" class="form-label">Expected return (%)</label>
+                        <label for="interest" class="form-label">Expected return (%)</label>
                         <div class="col col-lg-3">
-                            <input type="text" class="form-control" id="interest1">
+                            <input type="text" class="form-control" name="interest">
                         </div>
                     </div>
-                    <button type="button" onclick="showResultSIP()" class="btn btn-primary">Calculate</button>
+                    <button type="button" onclick="showResultSIP($('#formSIP'))"
+                        class="btn btn-primary">Calculate</button>
                 </form>
 
                 <div id="resultSIP" class="container" style="display: none;">
@@ -287,48 +288,48 @@
             var chart = new google.visualization.PieChart(document.getElementById(id));
             chart.draw(data, options);
         }
-        function showResultSIP() {
-            var amount = document.getElementById("amount").value;
-            var years = document.getElementById("years1").value;
-            var interest = document.getElementById("interest1").value;
+        function showResultSIP(f) {
+            var formId = "piechartSIP";
+            var form = f[0];
+            var formData = new FormData(form);
+            // var inputs = $('#formSIP :input');
+            // // console.log(inputs);
+            // inputs.each(function () {
+            //     // values[this.name] = $(this).val();
+            //     console.log($(this).attr("name"));
+            // });
+            // return;
+            // don't forget to validate
 
-            if (amount && years && interest) {
-
-                $.ajax({
-                    type: 'post',
-                    url: 'calcSIP.php',
-                    async: false,
-                    data: {
-                        amount: amount,
-                        years: years,
-                        interest: interest,
-                    },
-                    success: function (result) {
-                        var data = JSON.parse(result);
-                        // console.log(data.totalInvestment);
-                        document.getElementById("resultAmount").textContent = amount;
-                        document.getElementById("resultYears1").textContent = years;
-                        document.getElementById("resultRate1").textContent = interest;
-                        document.getElementById("totalInvestment1").textContent = data.totalInvestment;
-                        document.getElementById("wealthGained1").textContent = data.wealthGained;
-                        document.getElementById("maturityValue").textContent = data.maturityValue;
-
-                        var id = "piechartSIP";
-
-                        google.charts.load('current', { 'packages': ['corechart'] });
-                        google.charts.setOnLoadCallback(() => drawChart(data, id));
-                    }
-                })
+            $.ajax({
+                type: 'post',
+                url: 'calcSIP.php',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    var data = JSON.parse(result);
+                    // console.log(data.totalInvestment);
+                    // return;
+                    document.getElementById("totalInvestment1").textContent = data.totalInvestment;
+                    document.getElementById("wealthGained1").textContent = data.wealthGained;
+                    document.getElementById("maturityValue").textContent = data.maturityValue;
 
 
-                if (document.getElementById("formSIP").style.display == 'none') {
-                    document.getElementById("formSIP").style.display = 'block';
-                    document.getElementById("resultSIP").style.display = 'none';
-                } else {
-                    document.getElementById("formSIP").style.display = 'none';
-                    document.getElementById("resultSIP").style.display = 'block';
+                    google.charts.load('current', { 'packages': ['corechart'] });
+                    google.charts.setOnLoadCallback(() => drawChart(data, formId));
                 }
-            }
+            })
+
+
+            // if (document.getElementById("formSIP").style.display == 'none') {
+            //     document.getElementById("formSIP").style.display = 'block';
+            //     document.getElementById("resultSIP").style.display = 'none';
+            // } else {
+            //     document.getElementById("formSIP").style.display = 'none';
+                document.getElementById("resultSIP").style.display = 'block';
+            // }
         }
         function showResultSIPReverse() {
             var targetAmount = document.getElementById("targetAmount").value;

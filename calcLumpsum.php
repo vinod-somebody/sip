@@ -6,6 +6,7 @@ $amountExpected = $amount;
 for ($i = 0; $i < $duration; $i++) {
     $amountExpected += $amountExpected * $interest / 100;
 }
+
 $amountExpected = round($amountExpected);
 $wealthGained = round($amountExpected - $amount);
 

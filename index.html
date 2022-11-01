@@ -67,28 +67,6 @@
                         <div class="col-md-3">
                             <table class="table">
                                 <tr>
-                                    <td>Monthly Installment</td>
-                                    <td>
-                                        <h5 id="resultAmount"></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Number of Years</td>
-                                    <td>
-                                        <h5 id="resultYears1"></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Expected Rate of Return</td>
-                                    <td>
-                                        <h5 id="resultRate1"></h5>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-3">
-                            <table class="table">
-                                <tr>
                                     <td>Total Investment</td>
                                     <td>
                                         ₹<h4 id="totalInvestment1"></h4>
@@ -121,55 +99,41 @@
             <div class="tab-pane fade" id="pills-reverse" role="tabpanel" aria-labelledby="pills-reverse-tab">
                 <form id="formSIPReverse">
                     <div class="mb-3">
-                        <label for="targetAmount" class="form-label">Target Amount (₹)</label>
+                        <label for="amount" class="form-label">Target Amount (₹)</label>
                         <div class="col col-lg-3">
-                            <input type="text" class="form-control" name="targetAmount" id="targetAmount">
+                            <input type="text" class="form-control" name="amount">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="years2" class="form-label">Duration (in years)</label>
+                        <label for="duration" class="form-label">Duration (in years)</label>
                         <div class="col col-lg-3">
-                            <input type="number" class="form-control" id="years2">
+                            <input type="number" class="form-control" name="duration">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="interest2" class="form-label">Expected return (%)</label>
+                        <label for="interest" class="form-label">Expected return (%)</label>
                         <div class="col col-lg-3">
-                            <input type="text" class="form-control" id="interest2">
+                            <input type="text" class="form-control" name="interest">
                         </div>
                     </div>
-                    <button type="button" onclick="showResultSIPReverse()" class="btn btn-primary">Calculate</button>
+                    <button type="button" onclick="showResultSIPReverse($('#formSIPReverse'))"
+                        class="btn btn-primary">Calculate</button>
                 </form>
+                <div class="container d-flex justify-container-center">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="piechartSIPReverse" style="margin: 0px; width: 500px; height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
                 <div id="resultSIPReverse" class="container" style="display: none;">
                     <div class="row">
                         <div class="col-md-3">
                             <table class="table">
                                 <tr>
-                                    <td>Target Amount</td>
-                                    <td>
-                                        <h5 id="resultTargetAmount"></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Duration (in years)</td>
-                                    <td>
-                                        <h5 id="resultYears2"></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Expected Rate of Return</td>
-                                    <td>
-                                        <h5 id="resultRate2"></h5>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-3">
-                            <table class="table">
-                                <tr>
                                     <td>To achieve your goal, you need to invest</td>
                                     <td>
-                                        ₹<h4 id="resultGoalAmount"></h4>/Monthly
+                                        ₹<h4 id="monthlyInvestment"></h4>/Month
                                     </td>
                                 </tr>
                                 <tr>
@@ -193,49 +157,35 @@
             <div class="tab-pane fade" id="pills-lumpsum" role="tabpanel" aria-labelledby="pills-lumpsum-tab">
                 <form id="formLumpsum">
                     <div class="mb-3">
-                        <label for="amountInvested" class="form-label">One-time Investment (₹)</label>
+                        <label for="amount" class="form-label">One-time Investment (₹)</label>
                         <div class="col col-lg-3">
-                            <input type="text" class="form-control" name="amountInvested" id="amountInvested">
+                            <input type="text" class="form-control" name="amount">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="years3" class="form-label">Time Horizon (in years)</label>
+                        <label for="duration" class="form-label">Time Horizon (in years)</label>
                         <div class="col col-lg-3">
-                            <input type="number" class="form-control" id="years3">
+                            <input type="number" class="form-control" name="duration">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="interest3" class="form-label">Expected return (%)</label>
+                        <label for="interest" class="form-label">Expected return (%)</label>
                         <div class="col col-lg-3">
-                            <input type="text" class="form-control" id="interest3">
+                            <input type="text" class="form-control" name="interest">
                         </div>
                     </div>
-                    <button type="button" onclick="showResultLumpsum()" class="btn btn-primary">Calculate</button>
+                    <button type="button" onclick="showResultLumpsum($('#formLumpsum'))"
+                        class="btn btn-primary">Calculate</button>
                 </form>
                 <div id="resultLumpsum" class="container" style="display: none;">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <table class="table">
-                                <tr>
-                                    <td>One-time Investment</td>
-                                    <td>
-                                        <h5 id="resultAmountInvested"></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Time (in years)</td>
-                                    <td>
-                                        <h5 id="resultYears3"></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Expected Rate of Return</td>
-                                    <td>
-                                        <h5 id="resultRate3"></h5>
-                                    </td>
-                                </tr>
-                            </table>
+                    <div class="container d-flex justify-container-center">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="piechartLumpsum" style="margin: 0px; width: 500px; height: 500px;"></div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-3">
                             <table class="table">
                                 <tr>
@@ -272,13 +222,10 @@
     </div>
     <script>
         function drawChart(data, id) {
-            // console.log(data.totalInvestment);
-            // console.log(id);
-            // return;
             var data = google.visualization.arrayToDataTable([
                 ['Invested Amount', 'Estimated Returns'],
-                ['Estimated Returns', data.wealthGained],
-                ['Invested Amount', data.totalInvestment],
+                ['Estimated Returns', data.b],
+                ['Invested Amount', data.a],
             ]);
             var options = {
                 title: '',
@@ -292,13 +239,7 @@
             var formId = "piechartSIP";
             var form = f[0];
             var formData = new FormData(form);
-            // var inputs = $('#formSIP :input');
-            // // console.log(inputs);
-            // inputs.each(function () {
-            //     // values[this.name] = $(this).val();
-            //     console.log($(this).attr("name"));
-            // });
-            // return;
+            var dataGraph = {};
             // don't forget to validate
 
             $.ajax({
@@ -310,100 +251,77 @@
                 processData: false,
                 success: function (result) {
                     var data = JSON.parse(result);
-                    // console.log(data.totalInvestment);
-                    // return;
                     document.getElementById("totalInvestment1").textContent = data.totalInvestment;
                     document.getElementById("wealthGained1").textContent = data.wealthGained;
                     document.getElementById("maturityValue").textContent = data.maturityValue;
 
+                    dataGraph['a'] = data.totalInvestment;
+                    dataGraph['b'] = data.wealthGained;
 
                     google.charts.load('current', { 'packages': ['corechart'] });
-                    google.charts.setOnLoadCallback(() => drawChart(data, formId));
+                    google.charts.setOnLoadCallback(() => drawChart(dataGraph, formId));
+                }
+            })
+
+            document.getElementById("resultSIP").style.display = 'block';
+        }
+        function showResultSIPReverse(f) {
+            var formId = "piechartSIPReverse";
+            var form = f[0];
+            var formData = new FormData(form);
+            var dataGraph = {};
+
+            $.ajax({
+                type: 'post',
+                url: 'calcSIPReverse.php',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    var data = JSON.parse(result);
+                    document.getElementById("totalInvestment2").textContent = data.totalInvestment;
+                    document.getElementById("monthlyInvestment").textContent = data.monthlyInvestment;
+
+                    dataGraph['a'] = data.totalInvestment;
+                    dataGraph['b'] = Number(data.targetAmount);
+
+                    google.charts.load('current', { 'packages': ['corechart'] });
+                    google.charts.setOnLoadCallback(() => drawChart(dataGraph, formId));
+                }
+            })
+
+            document.getElementById("resultSIPReverse").style.display = 'block';
+        }
+        function showResultLumpsum(f) {
+            var formId = "piechartLumpsum";
+            var form = f[0];
+            var formData = new FormData(form);
+            var dataGraph = {};
+
+            $.ajax({
+                type: 'post',
+                url: 'calcLumpsum.php',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    var data = JSON.parse(result);
+                    document.getElementById("resultAmountInvested2").textContent = data.amount;
+                    document.getElementById("resultAmountExpected").textContent = data.amountExpected;
+                    document.getElementById("resultWealthGained").textContent = data.wealthGained;
+
+                    dataGraph['a'] = Number(data.amount);
+                    dataGraph['b'] = data.amountExpected;
+
+                    google.charts.load('current', { 'packages': ['corechart'] });
+                    google.charts.setOnLoadCallback(() => drawChart(dataGraph, formId));
                 }
             })
 
 
-            // if (document.getElementById("formSIP").style.display == 'none') {
-            //     document.getElementById("formSIP").style.display = 'block';
-            //     document.getElementById("resultSIP").style.display = 'none';
-            // } else {
-            //     document.getElementById("formSIP").style.display = 'none';
-                document.getElementById("resultSIP").style.display = 'block';
-            // }
-        }
-        function showResultSIPReverse() {
-            var targetAmount = document.getElementById("targetAmount").value;
-            var years2 = document.getElementById("years2").value;
-            var interest2 = document.getElementById("interest2").value;
-
-            if (targetAmount && years2 && interest2) {
-
-                $.ajax({
-                    type: 'post',
-                    url: 'calcSIPReverse.php',
-                    async: false,
-                    data: {
-                        targetAmount: targetAmount,
-                        years: years2,
-                        interest: interest2,
-                    },
-                    success: function (result) {
-                        var data = JSON.parse(result);
-                        // console.log(data.totalInvestment);
-                        document.getElementById("resultTargetAmount").textContent = targetAmount;
-                        document.getElementById("resultYears2").textContent = years2;
-                        document.getElementById("resultRate2").textContent = interest2;
-                        document.getElementById("totalInvestment2").textContent = data.totalInvestment;
-                        document.getElementById("resultGoalAmount").textContent = data.resultGoalAmount;
-                    }
-                })
-
-
-                if (document.getElementById("formSIPReverse").style.display == 'none') {
-                    document.getElementById("formSIPReverse").style.display = 'block';
-                    document.getElementById("resultSIPReverse").style.display = 'none';
-                } else {
-                    document.getElementById("formSIPReverse").style.display = 'none';
-                    document.getElementById("resultSIPReverse").style.display = 'block';
-                }
-            }
-        }
-        function showResultLumpsum() {
-            var amountInvested = document.getElementById("amountInvested").value;
-            var years3 = document.getElementById("years3").value;
-            var interest3 = document.getElementById("interest3").value;
-
-            if (amountInvested && years3 && interest3) {
-
-                $.ajax({
-                    type: 'post',
-                    url: 'calcLumpsum.php',
-                    async: false,
-                    data: {
-                        amountInvested: amountInvested,
-                        rate: interest3,
-                        time: years3,
-                    },
-                    success: function (result) {
-                        var data = JSON.parse(result);
-                        document.getElementById("resultAmountInvested").textContent = amountInvested;
-                        document.getElementById("resultYears3").textContent = years3;
-                        document.getElementById("resultRate3").textContent = interest3;
-                        document.getElementById("resultAmountInvested2").textContent = data.amountInvested;
-                        document.getElementById("resultAmountExpected").textContent = data.amountExpected;
-                        document.getElementById("resultWealthGained").textContent = data.wealthGained;
-                    }
-                })
-
-
-                if (document.getElementById("formLumpsum").style.display == 'none') {
-                    document.getElementById("formLumpsum").style.display = 'block';
-                    document.getElementById("resultLumpsum").style.display = 'none';
-                } else {
-                    document.getElementById("formLumpsum").style.display = 'none';
-                    document.getElementById("resultLumpsum").style.display = 'block';
-                }
-            }
+            document.getElementById("resultLumpsum").style.display = 'block';
         }
     </script>
 </body>

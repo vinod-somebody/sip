@@ -86,13 +86,6 @@
                                 </tr>
                             </table>
                         </div>
-                        <br>
-                        <div class="row">
-                            <div class="col col-lg-3">
-                                <button type="button" onclick="showResultSIP()" class="btn btn-primary">Calculate
-                                    Again</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -143,13 +136,6 @@
                                     </td>
                                 </tr>
                             </table>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col col-lg-3">
-                                <button type="button" onclick="showResultSIPReverse()" class="btn btn-primary">Calculate
-                                    Again</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,13 +194,6 @@
                                 </tr>
                             </table>
                         </div>
-                        <br>
-                        <div class="row">
-                            <div class="col col-lg-3">
-                                <button type="button" onclick="showResultLumpsum()" class="btn btn-primary">Calculate
-                                    Again</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -251,9 +230,9 @@
                 processData: false,
                 success: function (result) {
                     var data = JSON.parse(result);
-                    document.getElementById("totalInvestment1").textContent = data.totalInvestment;
-                    document.getElementById("wealthGained1").textContent = data.wealthGained;
-                    document.getElementById("maturityValue").textContent = data.maturityValue;
+                    document.getElementById("totalInvestment1").textContent = data.totalInvestment.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
+                    document.getElementById("wealthGained1").textContent = data.wealthGained.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
+                    document.getElementById("maturityValue").textContent = data.maturityValue.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
 
                     dataGraph['a'] = data.totalInvestment;
                     dataGraph['b'] = data.wealthGained;
@@ -280,8 +259,8 @@
                 processData: false,
                 success: function (result) {
                     var data = JSON.parse(result);
-                    document.getElementById("totalInvestment2").textContent = data.totalInvestment;
-                    document.getElementById("monthlyInvestment").textContent = data.monthlyInvestment;
+                    document.getElementById("totalInvestment2").textContent = Number(data.totalInvestment).toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
+                    document.getElementById("monthlyInvestment").textContent = data.monthlyInvestment.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
 
                     dataGraph['a'] = data.totalInvestment;
                     dataGraph['b'] = Number(data.targetAmount);
@@ -308,9 +287,9 @@
                 processData: false,
                 success: function (result) {
                     var data = JSON.parse(result);
-                    document.getElementById("resultAmountInvested2").textContent = data.amount;
-                    document.getElementById("resultAmountExpected").textContent = data.amountExpected;
-                    document.getElementById("resultWealthGained").textContent = data.wealthGained;
+                    document.getElementById("resultAmountInvested2").textContent = Number(data.amount).toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
+                    document.getElementById("resultAmountExpected").textContent = data.amountExpected.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
+                    document.getElementById("resultWealthGained").textContent = data.wealthGained.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
 
                     dataGraph['a'] = Number(data.amount);
                     dataGraph['b'] = data.amountExpected;

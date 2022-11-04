@@ -9,6 +9,7 @@
     <script type="text/javascript" src="jquery.min3.5.1.js"></script>
     <script type="text/javascript" src="bootstrap.min.js"></script>
     <script type="text/javascript" src="loader.js"></script>
+    <script type="text/javascript" src="custom.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -345,113 +346,6 @@
             objective, risk-taking capacity, and fluctuations in returns, then invest in a right, profitable fund
             through SIP. </p>
     </div>
-    <script>
-        function drawChart(data, id) {
-            var data = google.visualization.arrayToDataTable([
-                ['Invested Amount', 'Estimated Returns'],
-                ['Estimated Returns', data.b],
-                ['Invested Amount', data.a],
-            ]);
-            var formatter = new google.visualization.NumberFormat(
-                { pattern: '₹##,##,###' });
-            formatter.format(data, 1);
-            var options = {
-                title: '',
-                pieSliceText: 'value',
-                is3D: true
-            };
-            var chart = new google.visualization.PieChart(document.getElementById(id));
-            chart.draw(data, options);
-        }
-        function showResultSIP(f) {
-            var formId = "piechartSIP";
-            var form = f[0];
-            var formData = new FormData(form);
-            var dataGraph = {};
-            // don't forget to validate
-
-            $.ajax({
-                type: 'post',
-                url: 'calcSIP.php',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (result) {
-                    var data = JSON.parse(result);
-                    document.getElementById("totalInvestment1").textContent = data.totalInvestment.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
-                    document.getElementById("wealthGained1").textContent = data.wealthGained.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
-                    document.getElementById("maturityValue").textContent = data.maturityValue.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
-
-                    dataGraph['a'] = data.totalInvestment;
-                    dataGraph['b'] = data.wealthGained;
-
-                    google.charts.load('current', { 'packages': ['corechart'] });
-                    google.charts.setOnLoadCallback(() => drawChart(dataGraph, formId));
-                }
-            })
-
-            document.getElementById("resultSIP").style.display = 'block';
-        }
-        function showResultSIPReverse(f) {
-            var formId = "piechartSIPReverse";
-            var form = f[0];
-            var formData = new FormData(form);
-            var dataGraph = {};
-
-            $.ajax({
-                type: 'post',
-                url: 'calcSIPReverse.php',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (result) {
-                    var data = JSON.parse(result);
-                    document.getElementById("totalInvestment2").textContent = Number(data.totalInvestment).toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
-                    document.getElementById("monthlyInvestment").textContent = data.monthlyInvestment.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
-
-                    dataGraph['a'] = data.totalInvestment;
-                    dataGraph['b'] = Number(data.targetAmount);
-
-                    google.charts.load('current', { 'packages': ['corechart'] });
-                    google.charts.setOnLoadCallback(() => drawChart(dataGraph, formId));
-                }
-            })
-
-            document.getElementById("resultSIPReverse").style.display = 'block';
-        }
-        function showResultLumpsum(f) {
-            var formId = "piechartLumpsum";
-            var form = f[0];
-            var formData = new FormData(form);
-            var dataGraph = {};
-
-            $.ajax({
-                type: 'post',
-                url: 'calcLumpsum.php',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (result) {
-                    var data = JSON.parse(result);
-                    document.getElementById("resultAmountInvested2").textContent = Number(data.amount).toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
-                    document.getElementById("resultAmountExpected").textContent = data.amountExpected.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
-                    document.getElementById("resultWealthGained").textContent = data.wealthGained.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
-
-                    dataGraph['a'] = Number(data.amount);
-                    dataGraph['b'] = data.amountExpected;
-
-                    google.charts.load('current', { 'packages': ['corechart'] });
-                    google.charts.setOnLoadCallback(() => drawChart(dataGraph, formId));
-                }
-            })
-
-
-            document.getElementById("resultLumpsum").style.display = 'block';
-        }
-    </script>
 </body>
 
 </html>

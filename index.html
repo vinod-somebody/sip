@@ -206,6 +206,9 @@
                 ['Estimated Returns', data.b],
                 ['Invested Amount', data.a],
             ]);
+            var formatter = new google.visualization.NumberFormat(
+                { pattern: '₹##,##,###' });
+            formatter.format(data, 1);
             var options = {
                 title: '',
                 pieSliceText: 'value',
@@ -230,9 +233,9 @@
                 processData: false,
                 success: function (result) {
                     var data = JSON.parse(result);
-                    document.getElementById("totalInvestment1").textContent = data.totalInvestment.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
-                    document.getElementById("wealthGained1").textContent = data.wealthGained.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
-                    document.getElementById("maturityValue").textContent = data.maturityValue.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
+                    document.getElementById("totalInvestment1").textContent = data.totalInvestment.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
+                    document.getElementById("wealthGained1").textContent = data.wealthGained.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
+                    document.getElementById("maturityValue").textContent = data.maturityValue.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
 
                     dataGraph['a'] = data.totalInvestment;
                     dataGraph['b'] = data.wealthGained;
@@ -259,8 +262,8 @@
                 processData: false,
                 success: function (result) {
                     var data = JSON.parse(result);
-                    document.getElementById("totalInvestment2").textContent = Number(data.totalInvestment).toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
-                    document.getElementById("monthlyInvestment").textContent = data.monthlyInvestment.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
+                    document.getElementById("totalInvestment2").textContent = Number(data.totalInvestment).toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
+                    document.getElementById("monthlyInvestment").textContent = data.monthlyInvestment.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
 
                     dataGraph['a'] = data.totalInvestment;
                     dataGraph['b'] = Number(data.targetAmount);
@@ -287,9 +290,9 @@
                 processData: false,
                 success: function (result) {
                     var data = JSON.parse(result);
-                    document.getElementById("resultAmountInvested2").textContent = Number(data.amount).toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
-                    document.getElementById("resultAmountExpected").textContent = data.amountExpected.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
-                    document.getElementById("resultWealthGained").textContent = data.wealthGained.toLocaleString('en-IN', {maximumFractionDigits: 2, currency: 'INR'});;
+                    document.getElementById("resultAmountInvested2").textContent = Number(data.amount).toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
+                    document.getElementById("resultAmountExpected").textContent = data.amountExpected.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
+                    document.getElementById("resultWealthGained").textContent = data.wealthGained.toLocaleString('en-IN', { maximumFractionDigits: 2, currency: 'INR' });;
 
                     dataGraph['a'] = Number(data.amount);
                     dataGraph['b'] = data.amountExpected;

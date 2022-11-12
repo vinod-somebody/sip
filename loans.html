@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script type="text/javascript" src="jquery.min3.5.1.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <script type="text/javascript" src="loader.js"></script>
+    <script type="text/javascript" src="custom.js"></script>
+    <link rel="stylesheet" href="bootstrap-icons.min.css"
+        integrity="sha512-5PV92qsds/16vyYIJo3T/As4m2d8b6oWYfoqV+vtizRB6KhF1F9kYzWzQmsO6T3z3QG2Xdhrx7FQ+5R1LiQdUA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container justify-content-center m-5 border rounded p-5">
+        <h3>Home Loan EMI Calculator with Prepayments, Taxes & Insurance</h3>
+        <br>
+        <div class="row">
+            <form id="formHomeLoan">
+                <h5>Home Loan Details</h5>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <label>Home Value (HV)</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="homeprice" aria-label="Home Value (HV)">
+                            <span class="input-group-text">₹</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Margin OR Down Payment (DP)</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="downpayment"
+                                aria-label="Margin OR Down Payment (DP)">
+                            <span class="input-group-text btn-percent">%</span>
+                            <span class="input-group-text btn-rupees">₹</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Loan Insurance (LI)</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="homeloaninsuranceamount"
+                                aria-label="Loan Insurance (LI)">
+                            <span class="input-group-text">₹</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Loan Amount (HV + LI - DP)</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="homeloanamount"
+                                aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">₹</span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Interest Rate</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="homeloaninterest" aria-label="Interest Rate">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Loan Tenure</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="homeloanterm" aria-label="Loan Tenure">
+                            <span class="input-group-text">Yr</span>
+                            <span class="input-group-text">Mo</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Loan Fees & Charges</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="loanfees" aria-label="Loan Fees & Charges">
+                            <span class="input-group-text">%</span>
+                            <span class="input-group-text">₹</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Start Month & Year</label>
+                        <div class="input-group">
+                            <input type="month" class="form-control" name="startmonthyear"
+                                aria-label="Start Month & Year">
+                            <span class="input-group-text"><i class="bi bi-calendar-month"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <h5>Homeowner Expenses</h5>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <label>One-time Expenses</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="onetimeexpenses"
+                                aria-label="One-time Expenses">
+                            <span class="input-group-text">%</span>
+                            <span class="input-group-text">₹</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Property Taxes / year</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="propertytaxes"
+                                aria-label="Property Taxes / year">
+                            <span class="input-group-text">%</span>
+                            <span class="input-group-text">₹</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Home Insurance / year</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="homeinsurance"
+                                aria-label="Home Insurance / year">
+                            <span class="input-group-text">%</span>
+                            <span class="input-group-text">₹</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Maintenance Expenses / month</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="maintenanceexpenses"
+                                aria-label="Maintenance Expenses / month">
+                            <span class="input-group-text">₹</span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row col-lg-2 justify-container-center">
+                    <button onclick="calcHomeLoan($('#formHomeLoan'))" type="button"
+                        class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container justify-content-center m-5 border rounded p-5" id="divResult" style="display: none;">
+        <table class="table table-bordered table-sm" id="tableResult">
+            <thead>
+                <!-- <th>Year</th>
+                <th>Principal</th>
+                <th>Interest</th>
+                <th>Taxes, Home Insurance & Maintenance</th>
+                <th>Total Payment</th>
+                <th>Balance</th>
+                <th>Loan Paid to Date</th> -->
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function calcHomeLoan(f) {
+            var validation = ValidateForm(f);
+
+            if (validation == true) {
+                // var formId = "piechartSIP";
+                var form = f[0];
+                var formData = new FormData(form);
+                // var dataGraph = {};
+
+                $.ajax({
+                    type: 'post',
+                    url: 'calcHomeLoan.php',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        $('#divResult').show();
+                        var data = JSON.parse(result);
+                        var details = data.details;
+                        // console.log(details);
+                        details.reverse();
+
+                        details.forEach(item => {
+                            var table = document.getElementById("tableResult");
+                            var row = table.insertRow(0);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            var cell4 = row.insertCell(3);
+                            var cell5 = row.insertCell(4);
+
+                            cell1.innerHTML = item.a;
+                            cell2.innerHTML = item.b;
+                            cell3.innerHTML = item.c;
+                            cell4.innerHTML = item.a + item.b + item.c;
+                            cell5.innerHTML = item.balance;
+                        });
+                    }
+                })
+            }
+//             {
+//     "homeprice": "5000000",
+//     "downpayment": "12",
+//     "homeloaninsuranceamount": "1000",
+//     "homeloanamount": "400000",
+//     "homeloaninterest": "12",
+//     "homeloanterm": "15",
+//     "loanfees": "120",
+//     "startmonthyear": "Nov 2022",
+//     "onetimeexpenses": "100",
+//     "propertytaxes": "1300",
+//     "homeinsurance": "3400",
+//     "maintenanceexpenses": "4500"
+// }
+        }
+    </script>
+</body>
+
+</html>

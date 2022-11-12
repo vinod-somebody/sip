@@ -5,3 +5,13 @@
 .switch-bar {
     height: 
 }
+.nav-pills button {
+    color: white;
+}
+.nav-pills .nav-link:hover {
+    background: white;
+    color: black;
+}
+.nav-pills .nav-link {
+    border: 1px solid white;
+}

@@ -29,61 +29,74 @@
 </head>
 
 <body>
+    <header class="bg-primary text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item m-2" role="presentation">
+                        <button class="nav-link active" id="pills-sip-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-sip" type="button" role="tab" aria-controls="pills-sip"
+                            aria-selected="true">SIP Calculator</button>
+                    </li>
+                    <li class="nav-item m-2" role="presentation">
+                        <button class="nav-link" id="pills-reverse-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-reverse" type="button" role="tab" aria-controls="pills-reverse"
+                            aria-selected="false">SIP Reverse
+                            Calculator</button>
+                    </li>
+                    <li class="nav-item m-2" role="presentation">
+                        <button class="nav-link" id="pills-lumpsum-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-lumpsum" type="button" role="tab" aria-controls="pills-lumpsum"
+                            aria-selected="false">Lumpsum</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
     <div class="container justify-content-center m-5 border rounded p-5">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item m-2" role="presentation">
-                <button class="nav-link active" id="pills-sip-tab" data-bs-toggle="pill" data-bs-target="#pills-sip"
-                    type="button" role="tab" aria-controls="pills-sip" aria-selected="true">SIP Calculator</button>
-            </li>
-            <li class="nav-item m-2" role="presentation">
-                <button class="nav-link" id="pills-reverse-tab" data-bs-toggle="pill" data-bs-target="#pills-reverse"
-                    type="button" role="tab" aria-controls="pills-reverse" aria-selected="false">SIP Reverse
-                    Calculator</button>
-            </li>
-            <li class="nav-item m-2" role="presentation">
-                <button class="nav-link" id="pills-lumpsum-tab" data-bs-toggle="pill" data-bs-target="#pills-lumpsum"
-                    type="button" role="tab" aria-controls="pills-lumpsum" aria-selected="false">Lumpsum</button>
-            </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
+        <div class="tab-content col-md-6" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-sip" role="tabpanel" aria-labelledby="pills-sip-tab">
                 <div class="row">
-                    <div class="col-lg-6 col-lg-6 col-sm-12">
+                    <div class="col-lg-12 col-lg-12 col-sm-12">
                         <form id="formSIP">
                             <div class="mb-3">
-                                <label for="amount" class="form-label">Amount (₹)</label>
-                                <div class="col col-lg-6">
-                                    <input type="text" class="form-control" name="amount">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="duration" class="form-label">Duration (in years)</label>
-                                <div class="col col-lg-6">
-                                    <input type="number" class="form-control" name="duration">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="interest" class="form-label">Expected return (%)</label>
-                                <div class="col col-lg-6">
-                                    <input type="text" class="form-control" name="interest">
-                                </div>
-                            </div>
-                            <button type="button" onclick="showResultSIP($('#formSIP'))"
-                                class="btn btn-primary">Calculate</button>
-                        </form>
-                    </div>
-
-                    <div class="col-lg-6 col-lg-6 col-sm-12">
-                        <div id="resultSIP" class="container" style="display: none;">
-                            <div class="container d-flex justify-container-center">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div id="piechartSIP" style="margin: 0px; width: 500px; height: 500px;"></div>
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <label for="amount" class="form-label">Amount (₹)</label>
+                                        <input type="text" class="form-control" name="amount">
+                                    </div>
+                                    <div class="col">
+                                        <label for="duration" class="form-label">Duration (in years)</label>
+                                        <input type="number" class="form-control" name="duration">
                                     </div>
                                 </div>
                             </div>
+                            <div class="mb-3">
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <label for="interest" class="form-label">Expected return (%)</label>
+                                        <input type="text" class="form-control" name="interest">
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" style="margin-top: 30px;"
+                                            onclick="showResultSIP($('#formSIP'))"
+                                            class="btn btn-primary">Calculate</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-12 col-lg-12 col-sm-12">
+                        <div id="resultSIP" class="container" style="display: none;">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <table class="table">
                                         <tr>
                                             <td>Total Investment</td>
@@ -104,6 +117,9 @@
                                             </td>
                                         </tr>
                                     </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="piechartSIP" style="margin: 0px; width: 500px; height: 500px;"></div>
                                 </div>
                             </div>
                         </div>

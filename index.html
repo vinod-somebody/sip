@@ -17,7 +17,7 @@
     <meta name="robots" content="index,follow">
     <meta name="google-site-verification" content="aZWPJ8_L2T1axa0h5kxC0bjVgf0U8wMOryJ7zN_9UVs" />
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTMPC1GTR0"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTMPC1GTR0"></script> -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -28,7 +28,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #f6f6f6;">
     <header class="bg-primary text-white p-2">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -57,202 +57,210 @@
             </div>
         </div>
     </header>
-    <div class="container justify-content-center m-5 border rounded p-5">
-        <div class="tab-content col-md-6" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-sip" role="tabpanel" aria-labelledby="pills-sip-tab">
-                <div class="row">
-                    <div class="col-lg-12 col-lg-12 col-sm-12">
-                        <form id="formSIP">
-                            <div class="mb-3">
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="amount" class="form-label">Amount (₹)</label>
-                                        <input type="text" class="form-control" name="amount">
-                                    </div>
-                                    <div class="col">
-                                        <label for="duration" class="form-label">Duration (in years)</label>
-                                        <input type="number" class="form-control" name="duration">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="interest" class="form-label">Expected return (%)</label>
-                                        <input type="text" class="form-control" name="interest">
-                                    </div>
-                                    <div class="col">
-                                        <button type="button" style="margin-top: 30px;"
-                                            onclick="showResultSIP($('#formSIP'))"
-                                            class="btn btn-primary">Calculate</button>
+    <div class="container justify-content-center m-auto mt-5 shadow-sm border rounded p-5 bg-white">
+        <div class="ad" style="border: 1px solid black; height: 100px;"></div>
+        <br>
+        <div style="display: flex; justify-content: space-between;">
+            <div class="tab-content col-md-6" id="pills-tabContent" style="width: 49%;">
+                <div class="tab-pane fade show active" id="pills-sip" role="tabpanel" aria-labelledby="pills-sip-tab">
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-12 col-sm-12">
+                            <form id="formSIP">
+                                <div class="mb-3">
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <label for="amount" class="form-label">Amount (₹)</label>
+                                            <input type="text" class="form-control" name="amount">
+                                        </div>
+                                        <div class="col">
+                                            <label for="duration" class="form-label">Duration (in years)</label>
+                                            <input type="number" class="form-control" name="duration">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                                <div class="mb-3">
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <label for="interest" class="form-label">Expected return (%)</label>
+                                            <input type="text" class="form-control" name="interest">
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" style="margin-top: 30px;"
+                                                onclick="showResultSIP($('#formSIP'))"
+                                                class="btn btn-primary">Calculate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
-                    <div class="col-lg-12 col-lg-12 col-sm-12">
-                        <div id="resultSIP" class="container" style="display: none;">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Total Investment</td>
-                                            <td>
-                                                ₹<h4 id="totalInvestment1"></h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Wealth Gained</td>
-                                            <td>
-                                                ₹<h4 id="wealthGained1"></h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maturity Value</td>
-                                            <td>
-                                                ₹<h4 id="maturityValue"></h4>
-                                            </td>
-                                        </tr>
-                                    </table>
+                        <div class="col-lg-12 col-lg-12 col-sm-12">
+                            <div id="resultSIP" class="container" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div id="piechartSIP" style="margin: 0px; width: 500px; height: 500px;"></div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div id="piechartSIP" style="margin: 0px; width: 500px; height: 500px;"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="table">
+                                            <tr>
+                                                <td>Total Investment</td>
+                                                <td>
+                                                    ₹<h4 id="totalInvestment1"></h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Wealth Gained</td>
+                                                <td>
+                                                    ₹<h4 id="wealthGained1"></h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Maturity Value</td>
+                                                <td>
+                                                    ₹<h4 id="maturityValue"></h4>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-reverse" role="tabpanel" aria-labelledby="pills-reverse-tab">
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-12 col-sm-12">
+                            <form id="formSIPReverse">
+                                <div class="mb-3">
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <label for="amount" class="form-label">Target Amount (₹)</label>
+                                            <input type="text" class="form-control" name="amount">
+                                        </div>
+                                        <div class="col">
+                                            <label for="duration" class="form-label">Duration (in years)</label>
+                                            <input type="number" class="form-control" name="duration">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <label for="interest" class="form-label">Expected return (%)</label>
+                                            <input type="text" class="form-control" name="interest">
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" style="margin-top: 30px;"
+                                                onclick="showResultSIPReverse($('#formSIPReverse'))"
+                                                class="btn btn-primary">Calculate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-12 col-lg-12 col-sm-12">
+                            <div id="resultSIPReverse" class="container" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="table">
+                                            <tr>
+                                                <td>To achieve your goal, you need to invest</td>
+                                                <td>
+                                                    ₹<h4 id="monthlyInvestment"></h4>/Month
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total Investment</td>
+                                                <td>
+                                                    ₹<h4 id="totalInvestment2"></h4>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="piechartSIPReverse" style="margin: 0px; width: 500px; height: 500px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-lumpsum" role="tabpanel" aria-labelledby="pills-lumpsum-tab">
+                    <div class="row">
+                        <div class="col-lg-12 col-lg-12 col-sm-12">
+                            <form id="formLumpsum">
+                                <div class="mb-3">
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <label for="amount" class="form-label">One-time Investment (₹)</label>
+                                            <input type="text" class="form-control" name="amount">
+                                        </div>
+                                        <div class="col">
+                                            <label for="duration" class="form-label">Time Horizon (in years)</label>
+                                            <input type="number" class="form-control" name="duration">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <label for="interest" class="form-label">Expected return (%)</label>
+                                            <input type="text" class="form-control" name="interest">
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" style="margin-top: 30px;"
+                                                onclick="showResultLumpsum($('#formLumpsum'))"
+                                                class="btn btn-primary">Calculate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-12 col-lg-12 col-sm-12">
+                            <div id="resultLumpsum" class="container" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="table">
+                                            <tr>
+                                                <td>Investment Amount</td>
+                                                <td>
+                                                    ₹<h4 id="resultAmountInvested2"></h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Expected Amount</td>
+                                                <td>
+                                                    ₹<h4 id="resultAmountExpected"></h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Wealth Gained</td>
+                                                <td>
+                                                    ₹<h4 id="resultWealthGained"></h4>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="piechartLumpsum" style="margin: 0px; width: 500px; height: 500px;">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-reverse" role="tabpanel" aria-labelledby="pills-reverse-tab">
-                <div class="row">
-                    <div class="col-lg-12 col-lg-12 col-sm-12">
-                        <form id="formSIPReverse">
-                            <div class="mb-3">
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="amount" class="form-label">Target Amount (₹)</label>
-                                        <input type="text" class="form-control" name="amount">
-                                    </div>
-                                    <div class="col">
-                                        <label for="duration" class="form-label">Duration (in years)</label>
-                                        <input type="number" class="form-control" name="duration">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="interest" class="form-label">Expected return (%)</label>
-                                        <input type="text" class="form-control" name="interest">
-                                    </div>
-                                    <div class="col">
-                                        <button type="button" style="margin-top: 30px;"
-                                            onclick="showResultSIPReverse($('#formSIPReverse'))"
-                                            class="btn btn-primary">Calculate</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="col-lg-12 col-lg-12 col-sm-12">
-                        <div id="resultSIPReverse" class="container" style="display: none;">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <table class="table">
-                                        <tr>
-                                            <td>To achieve your goal, you need to invest</td>
-                                            <td>
-                                                ₹<h4 id="monthlyInvestment"></h4>/Month
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Total Investment</td>
-                                            <td>
-                                                ₹<h4 id="totalInvestment2"></h4>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="col-md-6">
-                                    <div id="piechartSIPReverse" style="margin: 0px; width: 500px; height: 500px;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="pills-lumpsum" role="tabpanel" aria-labelledby="pills-lumpsum-tab">
-                <div class="row">
-                    <div class="col-lg-12 col-lg-12 col-sm-12">
-                        <form id="formLumpsum">
-                            <div class="mb-3">
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="amount" class="form-label">One-time Investment (₹)</label>
-                                        <input type="text" class="form-control" name="amount">
-                                    </div>
-                                    <div class="col">
-                                        <label for="duration" class="form-label">Time Horizon (in years)</label>
-                                        <input type="number" class="form-control" name="duration">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="interest" class="form-label">Expected return (%)</label>
-                                        <input type="text" class="form-control" name="interest">
-                                    </div>
-                                    <div class="col">
-                                        <button type="button" style="margin-top: 30px;"
-                                            onclick="showResultLumpsum($('#formLumpsum'))"
-                                            class="btn btn-primary">Calculate</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-12 col-lg-12 col-sm-12">
-                        <div id="resultLumpsum" class="container" style="display: none;">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Investment Amount</td>
-                                            <td>
-                                                ₹<h4 id="resultAmountInvested2"></h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Expected Amount</td>
-                                            <td>
-                                                ₹<h4 id="resultAmountExpected"></h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Wealth Gained</td>
-                                            <td>
-                                                ₹<h4 id="resultWealthGained"></h4>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="col-md-6">
-                                    <div id="piechartLumpsum" style="margin: 0px; width: 500px; height: 500px;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-6" style="border: 1px solid black; margin-left: 20px; width: 500px; height: 200px;">
             </div>
         </div>
     </div>
-    <div class="container justify-content-center m-5 border rounded p-5">
+    <div class="container justify-content-center m-auto mt-5 shadow-sm border rounded p-5 bg-white">
         <h3>What is a SIP Calculator?</h3>
         <p>Warren Buffet has rightly said, ‘If you don’t find a way to make money while you sleep, you will work
             until

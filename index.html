@@ -30,6 +30,24 @@
 </head>
 
 <body style="background-color: #f6f6f6;">
+    <header class="bg-primary text-white p-2">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img src="logo.png" alt="logo">
+                </a>
+
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item m-2" role="presentation">
+                        <a class="nav-link text-light" href="sip">SIP</a>
+                    </li>
+                    <li class="nav-item m-2" role="presentation">
+                        <a class="nav-link text-light" href="mutual-fund">Mutual Fund</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
     <div class="container justify-content-center m-auto mt-5 shadow-sm border rounded p-5 bg-white">
         <div class="rounded p-2">
             <div class="container">
@@ -40,20 +58,20 @@
 
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">
                         <li class="nav-item m-2" role="presentation">
-                            <button class="nav-link active" onclick="updateHeading(this)" id="pills-sip-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-sip" type="button" role="tab" aria-controls="pills-sip"
-                                aria-selected="true">SIP Calculator</button>
+                            <button class="nav-link active" onclick="updateHeading(this)" id="pills-sip-tab"
+                                data-bs-toggle="pill" data-bs-target="#pills-sip" type="button" role="tab"
+                                aria-controls="pills-sip" aria-selected="true">SIP Calculator</button>
                         </li>
                         <li class="nav-item m-2" role="presentation">
-                            <button class="nav-link" onclick="updateHeading(this)" id="pills-reverse-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-reverse" type="button" role="tab" aria-controls="pills-reverse"
-                                aria-selected="false">SIP Reverse
+                            <button class="nav-link" onclick="updateHeading(this)" id="pills-reverse-tab"
+                                data-bs-toggle="pill" data-bs-target="#pills-reverse" type="button" role="tab"
+                                aria-controls="pills-reverse" aria-selected="false">SIP Reverse
                                 Calculator</button>
                         </li>
                         <li class="nav-item m-2" role="presentation">
-                            <button class="nav-link" onclick="updateHeading(this)" id="pills-lumpsum-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-lumpsum" type="button" role="tab" aria-controls="pills-lumpsum"
-                                aria-selected="false">Lumpsum</button>
+                            <button class="nav-link" onclick="updateHeading(this)" id="pills-lumpsum-tab"
+                                data-bs-toggle="pill" data-bs-target="#pills-lumpsum" type="button" role="tab"
+                                aria-controls="pills-lumpsum" aria-selected="false">Lumpsum</button>
                         </li>
                     </ul>
                 </div>

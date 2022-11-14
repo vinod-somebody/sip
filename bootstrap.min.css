@@ -12633,3 +12633,13 @@ fieldset:disabled .btn {
         display: none !important
     }
 }
+.nav-pills button {
+    color: var(--bs-nav-pills-link-active-bg);
+}
+.nav-pills .nav-link:hover {
+    background: var(--bs-nav-pills-link-active-bg);
+    color: white;
+}
+.nav-pills .nav-link {
+    border: 1px solid var(--bs-nav-pills-link-active-bg);
+}

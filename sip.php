@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bootstrap.min.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="<?php echo $rootUrl; ?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $rootUrl; ?>/css/style.css">
     <title>SIP: What is SIP and How it works?</title>
     <meta name="description"
         content="SIP: A Systematic Investment Plan (SIP) is an investment process which allows the users to invest a amount at regular intervals in different stocks via mutual funds.">
@@ -27,6 +27,7 @@
 </head>
 
 <body style="background-color: #f6f6f6;">
+    <?php include_once('include/header.php'); ?>
     <div class="container justify-content-center m-auto mt-5 border rounded p-5 bg-white">
         <h1>SIP</h1>
         <p>A smart investment allows you to build wealth and use your hard-earned money on a rainy day or times of

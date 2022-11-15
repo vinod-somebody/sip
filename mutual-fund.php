@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bootstrap.min.css">
-    <script type="text/javascript" src="../jquery.min3.5.1.js"></script>
-    <script type="text/javascript" src="../bootstrap.min.js"></script>
-    <script type="text/javascript" src="../loader.js"></script>
-    <script type="text/javascript" src="../custom.js"></script>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="<?php echo $rootUrl; ?>/css/bootstrap.min.css">
+    <script type="text/javascript" src="<?php echo $rootUrl; ?>/js/jquery.min3.5.1.js"></script>
+    <script type="text/javascript" src="<?php echo $rootUrl; ?>/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo $rootUrl; ?>/js/loader.js"></script>
+    <script type="text/javascript" src="<?php echo $rootUrl; ?>/js/custom.js"></script>
+    <link rel="stylesheet" href="<?php echo $rootUrl; ?>/css/style.css">
     <title>SIP Calculator - Buy Mutual Fund SIP Return Calculator Online</title>
     <meta name="description"
         content="SIP Calculator: Buy Mutual Fund Return Calculator, A Systematic Investment Plan (SIP) Calculator is a tool that helps you calculate the returns you will earn on your SIPs.">
@@ -30,6 +30,7 @@
 </head>
 
 <body style="background-color: #f6f6f6;">
+    <?php include_once('include/header.php'); ?>
     <div class="container justify-content-center m-auto mt-5 shadow-sm border rounded p-5 bg-white">
         <h1>What is a Mutual Fund?</h1>
         <p><b>Mutual fund</b> is an investment vehicle which allows investors to pool their money with other investors

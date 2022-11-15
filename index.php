@@ -1,3 +1,6 @@
+<?php
+include_once('include/functions.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,12 +8,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script type="text/javascript" src="jquery.min3.5.1.js"></script>
-    <script type="text/javascript" src="bootstrap.min.js"></script>
-    <script type="text/javascript" src="loader.js"></script>
-    <script type="text/javascript" src="custom.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<?php echo $rootUrl; ?>/css/bootstrap.min.css">
+    <script type="text/javascript" src="<?php echo $rootUrl; ?>/js/jquery.min3.5.1.js"></script>
+    <script type="text/javascript" src="<?php echo $rootUrl; ?>/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo $rootUrl; ?>/js/loader.js"></script>
+    <script type="text/javascript" src="<?php echo $rootUrl; ?>/js/custom.js"></script>
+    <link rel="stylesheet" href="<?php echo $rootUrl; ?>/css/style.css">
     <title>SIP Calculator - Buy Mutual Fund SIP Return Calculator Online</title>
     <meta name="description"
         content="SIP Calculator: Buy Mutual Fund Return Calculator, A Systematic Investment Plan (SIP) Calculator is a tool that helps you calculate the returns you will earn on your SIPs.">
@@ -18,7 +21,7 @@
     <link rel="canonical" href="https://www.mysipcalculator.co.in/" />
     <meta name="google-site-verification" content="aZWPJ8_L2T1axa0h5kxC0bjVgf0U8wMOryJ7zN_9UVs" />
     <!-- Google tag (gtag.js) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTMPC1GTR0"></script> -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTMPC1GTR0"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -30,24 +33,7 @@
 </head>
 
 <body style="background-color: #f6f6f6;">
-    <header class="bg-primary text-white p-2">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <img src="logo.png" alt="logo">
-                </a>
-
-                <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                    <li class="nav-item m-2" role="presentation">
-                        <a class="nav-link text-light" href="sip">SIP</a>
-                    </li>
-                    <li class="nav-item m-2" role="presentation">
-                        <a class="nav-link text-light" href="mutual-fund">Mutual Fund</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <?php include('include/header.php'); ?>
     <div class="container justify-content-center m-auto mt-5 shadow-sm border rounded p-5 bg-white">
         <div class="rounded p-2">
             <div class="container">

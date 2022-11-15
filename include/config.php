@@ -23,8 +23,8 @@ if ($pos === false) {
 }
 global $rootUrl;
 $language = 'en';
-$copyRight = 'Copyright ' . date('Y') . ' @  SIP Calculator India';
-$site_name = "SIP Calculator India";
+$copyRight = 'Copyright ' . date('Y') . ' @ My SIP Calculator';
+$siteName = "My SIP Calculator";
 $ipAddr = @$_SERVER['REMOTE_ADDR'];
 $_SESSION['rootUrl'] = $rootUrl;
 function pr($a) {echo "<pre>"; print_r($a); echo "</pre>";}

@@ -395,6 +395,7 @@ include_once('include/functions.php');
             objective, risk-taking capacity, and fluctuations in returns, then invest in a right, profitable fund
             through SIP. </p>
     </div>
+    <?php include('include/footer.php'); ?>
     <script>
         let updateHeading = (t) => { document.getElementById('heading').textContent = t.textContent; }
     </script>
